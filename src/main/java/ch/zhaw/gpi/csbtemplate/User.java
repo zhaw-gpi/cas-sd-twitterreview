@@ -7,7 +7,7 @@ public class User {
 
     private String firstName;
     private String officialName;
-    private String email;
+    private String eMail;
 
     public String getFirstName() {
         return firstName;
@@ -25,12 +25,12 @@ public class User {
         this.officialName = officialName;
     }
 
-    public String getEmail() {
-        return email;
+    public String geteMail() {
+        return eMail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 
     

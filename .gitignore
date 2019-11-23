@@ -36,3 +36,5 @@ mail-template.properties
 
 #Twitter-Properties
 twitter4j.properties
+
+/.sts4-cache/

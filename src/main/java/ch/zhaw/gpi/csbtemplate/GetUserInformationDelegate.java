@@ -4,7 +4,8 @@ import javax.inject.Named;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -22,11 +23,11 @@ public class GetUserInformationDelegate implements JavaDelegate {
         String fullName;
         String email;
         try {
-            User user = restTemplate.getForObject("http://localhost:8070/userapi/v1/users/{userName}", User.class, userName);
-            
+            ResponseEntity<User> userResponse = restTemplate.exchange("http://localhost:8070/users/{userName}", HttpMethod.GET,  null, User.class, userName);
+            User user = userResponse.getBody();
             fullName = user.getFirstName() + " " + user.getOfficialName();
-            email = user.getEmail();
-        } catch (HttpClientErrorException e) {
+            email = user.geteMail();
+        } catch (Exception e) {
             fullName = "Mr. X";
             email = "a@b.ch";
         }
